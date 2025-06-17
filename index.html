@@ -202,6 +202,7 @@
                 <label for="selection">Rapor Türününüz</label>
                 <select id="selection">
                     <option value="FTP">Field Training Program</option>
+                    <option value="Saat">Saat</option>
                 </select>
             </div>
 
@@ -252,6 +253,72 @@
 
         <!-- FTP Formu Bitiş -->
 
+
+        <!-- Saat Formu -->
+
+    <div id="SaatPage" class="container" style="display: none;">
+  <div id="timeContainer">
+    <div class="time-block">
+      <label>Başlangıç:</label>
+      <input type="time" class="start">
+      <label>Bitiş:</label>
+      <input type="time" class="end">
+    </div>
+  </div>
+
+  <button onclick="addTimeBlock()">Ekstra Ekle</button>
+  <button onclick="calculateTotal()">Hesapla</button>
+
+  <p id="result">Toplam: 0 saat 0 dakika</p>
+
+  <script>
+    function addTimeBlock() {
+      const container = document.getElementById("timeContainer");
+      const div = document.createElement("div");
+      div.className = "time-block";
+      div.innerHTML = `
+        <label>Başlangıç:</label>
+        <input type="time" class="start">
+        <label>Bitiş:</label>
+        <input type="time" class="end">
+      `;
+      container.appendChild(div);
+    }
+
+    function calculateTotal() {
+      const starts = document.querySelectorAll(".start");
+      const ends = document.querySelectorAll(".end");
+
+      let totalMinutes = 0;
+
+      for (let i = 0; i < starts.length; i++) {
+        const start = starts[i].value;
+        const end = ends[i].value;
+
+        if (!start || !end) continue;
+
+        const [sh, sm] = start.split(":").map(Number);
+        const [eh, em] = end.split(":").map(Number);
+
+        const startDate = new Date(0, 0, 0, sh, sm);
+        const endDate = new Date(0, 0, 0, eh, em);
+
+        let diff = (endDate - startDate) / 1000 / 60;
+        if (diff < 0) diff += 24 * 60;
+
+        totalMinutes += diff;
+      }
+
+      const hours = Math.floor(totalMinutes / 60);
+      const minutes = totalMinutes % 60;
+
+      document.getElementById("result").textContent = `Toplam: ${hours} saat ${minutes} dakika`;
+    }
+  </script>
+
+    
+            <!-- Saat Formu Bitiş -->
+
     <script>
 
         function validateCharacter() {
@@ -262,6 +329,10 @@
                     document.getElementById("loginPage").style.display = "none";
                     document.getElementById("ftpPage").style.display = "block";
                     createFTPQuestions();
+                } 
+                 if (selectedOption === "Saat") {
+                    document.getElementById("loginPage").style.display = "none";
+                    document.getElementById("SaatPage").style.display = "block";
                 } else {
                     alert(selectedOption + " formu henüz mevcut değil.");
                 }
