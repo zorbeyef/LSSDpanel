@@ -1,0 +1,420 @@
+!DOCTYPE html
+html lang=enheadmeta http-equiv=Content-Type content=texthtml; charset=UTF-8
+    meta name=viewport content=width=device-width, initial-scale=1.0
+    link rel=icon href=httpswww.rina-roleplay.comgtavThemesdefaultimagesboardicons2.png type=imagex-icon 
+    titleLSSD Paneltitle
+    style
+         Ortak Stil 
+        body {
+            font-family Arial, sans-serif;
+            background-color #333; 
+            margin 0;
+            padding 0;
+            height 100%;
+            overflow-y auto; 
+        }
+
+         Giriş Sayfası 
+        .login-container {
+            position fixed; 
+            top 50%;
+            left 50%;
+            transform translate(-50%, -50%);
+            width 100%;
+            max-width 400px;
+            padding 30px;
+            background-color rgba(0, 0, 0, 0.8); 
+            border-radius 8px;
+            box-shadow 0 4px 10px rgba(0, 0, 0, 0.5);
+            color white;
+            text-align center;
+            z-index 2; 
+        }
+
+        .login-box h1 {
+            margin-bottom 20px;
+            font-size 2rem;
+            color #fff;
+        }
+
+        .form-group input {
+            width 80%;
+            padding 10px;
+            margin-top 15px;
+            border 1px solid #ccc;
+            border-radius 4px;
+            font-size 16px;
+            background-color #333;
+            color white;
+        }
+
+        .form-group select {
+            width 80%;
+            padding 10px;
+            margin-top 15px;
+            border 1px solid #ccc;
+            border-radius 4px;
+            font-size 16px;
+            background-color #333;
+            color white;
+        }
+
+        .form-group inputfocus, .form-group selectfocus {
+            outline none;
+            border-color #054daa;
+        }
+
+        .btn {
+            background-color #00994C;
+            color rgb(255, 255, 255);
+            padding 10px 20px;
+            border none;
+            border-radius 8px;
+            cursor pointer;
+            font-size 16px;
+            margin-top 20px;
+            width 100%;
+        }
+
+        .btnhover {
+            background-color #33FF99;
+        }
+
+        .error-message {
+            color red;
+            font-size 14px;
+            margin-top 10px;
+        }
+
+         BBCODE Sayfası 
+        .container {
+            max-width 1200px;
+            margin 20px auto;
+            background-color #ffffff;
+            opacity 1;
+            padding 20px;
+            box-shadow 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius 8px;
+        }
+
+        h1 {
+            text-align center;
+            margin-bottom 20px;
+            color #444;
+        }
+
+        .form-group {
+            margin-bottom 25px;
+        }
+
+        .form-group label {
+            font-weight bold;
+            display block;
+            margin-bottom 10px;
+        }
+
+        .form-group textarea {
+            width 100%;
+            padding 10px;
+            border 1px solid #ccc;
+            border-radius 4px;
+            resize none;
+            font-size 14px;
+        }
+
+        .output-container textarea {
+            width 100%;
+            height 500px;
+            padding 10px;
+            border 1px solid #ccc;
+            border-radius 4px;
+            font-family monospace;
+            font-size 14px;
+        }
+
+        .copy-btn {
+            background-color #00994C;
+            color white;
+            padding 10px 20px;
+            border none;
+            border-radius 4px;
+            font-size 16px;
+            cursor pointer;
+            display block;
+            width 100%;
+            margin-top 10px;
+        }
+
+        .copy-btnhover {
+            background-color #e0e0e0;
+        }
+
+        .loading-container {
+            display none;
+            margin-top 20px;
+            text-align center;
+        }
+
+        .loading-bar {
+            width 100%;
+            height 20px;
+            background-color #e0e0e0;
+            border-radius 4px;
+            overflow hidden;
+            margin-top 10px;
+        }
+
+        .loading-progress {
+            height 100%;
+            width 0;
+            background-color #054daa;
+        }
+
+        .loading-text {
+            margin-top 10px;
+            font-size 16px;
+            color #555;
+        }
+
+        .radio-group {
+        display flex;
+        align-items center;
+        }
+
+        .radio-group label {
+       margin-right 20px;
+        }
+
+        .radio-group input[type=radio] {
+       margin-right 20px;
+        }
+
+    style
+body
+
+    !-- Giriş Ekranı --
+    div id=loginPage class=login-container
+        div class=login-box
+            img width=200px src=httpsi.hizliresim.com9v6bakd.png alt=
+            h3LSSD Panelh3
+
+            div class=form-group
+                label for=selectionRapor Türününüzlabel
+                select id=selection
+                    option value=FTPField Training Programoption
+                select
+            div
+
+            button class=btn onclick=validateCharacter()Giriş Yapbutton
+            div id=error-message class=error-messagediv
+        div
+    div
+
+        !-- Giriş Ekranı Bitiş --
+
+    !-- FTP Formu --
+    div id=ftpPage class=container style=display none;
+        h1FTP Formuh1
+        h1 style=font-size 15px;( span style=color red;span kanıtlandırılması gereken zorunlu konuları belirtir )h1
+        div id=questionsContainerdiv
+
+        div class=form-group
+            label for=kanitlarDevriye Kanıtlandırılmasılabel
+            input type=text id=kanitlar placeholder=Kanıtlandırmaları sunun.
+        div
+
+        div class=form-group
+            label for=egitmenisimEğitmenin Adı Soyadılabel
+            input type=text id=egitmenisim placeholder=Örn. Will Winter
+        div
+
+        div class=form-group
+            label for=egitmenrutbeEğitmenin Departman Kıdemilabel
+            input type=text id=egitmenrutbe placeholder=Örn. Deputy Sheriff +I
+        div
+
+        button type=button class=btn onclick=generateBBCode()Raporu Oluşturbutton
+
+        h1h1
+
+        div class=loading-container id=loadingContainer
+            div class=loading-bar
+                div class=loading-progress id=loadingProgressdiv
+            div
+            div class=loading-text id=loadingTextRapor Hazırlanıyordiv
+        div
+
+        div class=output-container
+            textarea id=bbcodeOutput readonly= placeholder=Rapor Hazırlandıktan Sonra Burada Gözükecektextarea
+            button class=copy-btn onclick=copyToClipboard()Raporu Kopyalabutton
+        div
+    div
+
+        !-- FTP Formu Bitiş --
+
+    script
+
+        function validateCharacter() {
+            const selectedOption = document.getElementById(selection).value;
+            const errorMessage = document.getElementById(error-message);
+
+                if (selectedOption === FTP) {
+                    document.getElementById(loginPage).style.display = none;
+                    document.getElementById(ftpPage).style.display = block;
+                    createFTPQuestions();
+                } else {
+                    alert(selectedOption +  formu henüz mevcut değil.);
+                }
+            }
+
+            function createFTPQuestions() {
+    const questions = [
+        { id update, title Stajyer memurun update durumu hakkında olan görüşünüz nedir, minWords 20 },
+        { id situation1055, title 'Stajyer memurun 10-55 durumu hakkında olan görüşünüz nedir span style=color red;span', minWords 35 },
+        { id situation1066, title Stajyer memurun 10-66 (Felony) durumu hakkında olan görüşünüz nedir, minWords 35 },
+        { id radioUse, title 'Stajyer memurun telsiz kullanımı hakkında olan görüşünüz nedir span style=color red;span', minWords 15 },
+        { id tacticalFrequency, title Stajyer memurun taktiksel frekans durumu hakkında olan görüşünüz nedir, minWords 35 },
+        { id civilCommunication, title Stajyer memurun siviller ile iletişimi hakkında olan görüşünüz nedir, minWords 15 },
+        { id forceUse, title 'Stajyer memurun güç kullanımı konusu hakkında olan görüşünüz nedir span style=color red;span', minWords 35 },
+        { id hierarchy, title Stajyer memurun hiyerarşi hakkında olan görüşünüz nedir, minWords 15 },
+        { id incidentArea, title Stajyer memurun olay bölgesi hakkında olan görüşünüz nedir, minWords 25 },
+        { id equipmentKnowledge, title 'Stajyer memurun ekipman bilgisi hakkında olan görüşünüz nedir span style=color red;span', minWords 20 },
+        { id mirandaRights, title 'Stajyer memurun miranda hakları hakkında olan görüşünüz nedir span style=color red;span', minWords 15 },
+        { id vehicleUsage, title Stajyer memurun araç kullanımı hakkında olan görüşünüz nedir, minWords 15 },
+    ];
+
+    const questionsContainer = document.getElementById(questionsContainer);
+
+questions.forEach(q = {
+    const questionHTML = `
+        div class=form-group
+            label for=${q.id}● ${q.title}label
+            textarea id=${q.id} rows=3 placeholder=Minimum ${q.minWords} kelimelik bilgilendirme giriniz. data-min-words=${q.minWords}textarea
+            div id=${q.id}WordCount class=word-countKelime Sayısı 0div
+            div class=radio-group
+                labelinput type=radio name=${q.id}Status value=Yeterli checked Yeterlilabel
+                labelinput type=radio name=${q.id}Status value=Orta Ortalabel
+                labelinput type=radio name=${q.id}Status value=Yetersiz Yetersizlabel
+                labelinput type=radio name=${q.id}Status value=Değerlendirilmedi Değerlendirilmedilabel
+            div
+        div
+    `;
+    questionsContainer.innerHTML += questionHTML;
+});
+
+ Karakter sayacı hesaplama bölümü
+const textareas = document.querySelectorAll('textarea');
+textareas.forEach(textarea = {
+    textarea.addEventListener('input', function() {
+        const minWords = this.getAttribute('data-min-words');
+        countWords(this.id, minWords);
+    });
+});
+
+function countWords(textareaId, minWords) {
+    const text = document.getElementById(textareaId).value.trim();
+    const wordCount = text ===   0  text.split(s+).length;
+    const wordCountDiv = document.getElementById(`${textareaId}WordCount`);
+    wordCountDiv.innerText = `Kelime Sayısı ${wordCount}`;
+    
+    if (wordCount  minWords) {
+        wordCountDiv.style.color = 'red';
+    } else {
+        wordCountDiv.style.color = 'green';
+    }
+}}
+
+    function generateBBCode() {
+    document.getElementById(loadingContainer).style.display = block;
+    let progress = 0;
+    const loadingText = document.getElementById(loadingText);
+    const loadingProgress = document.getElementById(loadingProgress);
+
+    let bbcode = `[divbox=transparent]nn`;
+    bbcode += `[center][img width=175]httpsi.hizliresim.com9v6bakd.png[img]n`;
+    bbcode += `[size=10pt][b]LOS SANTOS SHERIFF DEPARTMENT — FIELD TRAINING[b][size]n`;
+    bbcode += `[i][size=8pt][b]A Tradition of Service[b][size][i][center]nn[hr]nn`;
+
+    const questions = [
+        { id update, title Stajyer memurun update durumu hakkında olan görüşünüz nedir, minWords 20 },
+        { id situation1055, title Stajyer memurun 10-55 durumu hakkında olan görüşünüz nedir, minWords 35 },
+        { id situation1066, title Stajyer memurun 10-66 (Felony) durumu hakkında olan görüşünüz nedir, minWords 35 },
+        { id radioUse, title Stajyer memurun telsiz kullanımı hakkında olan görüşünüz nedir, minWords 15 },
+        { id tacticalFrequency, title Stajyer memurun taktiksel frekans durumu hakkında olan görüşünüz nedir, minWords 35 },
+        { id civilCommunication, title Stajyer memurun siviller ile iletişimi hakkında olan görüşünüz nedir, minWords 15 },
+        { id forceUse, title Stajyer memurun güç kullanımı konusu hakkında olan görüşünüz nedir, minWords 35 },
+        { id hierarchy, title Stajyer memurun hiyerarşi hakkında olan görüşünüz nedir, minWords 15 },
+        { id incidentArea, title Stajyer memurun olay bölgesi hakkında olan görüşünüz nedir, minWords 25 },
+        { id equipmentKnowledge, title Stajyer memurun ekipman bilgisi hakkında olan görüşünüz nedir, minWords 20 },
+        { id mirandaRights, title Stajyer memurun miranda hakları hakkında olan görüşünüz nedir, minWords 15 },
+        { id vehicleUsage, title Stajyer memurun araç kullanımı hakkında olan görüşünüz nedir, minWords 15 }
+    ];
+
+    let stage = 0;
+    const interval = setInterval(() = {
+        if (stage  questions.length) {
+            const q = questions[stage];
+            const value = document.getElementById(q.id).value.trim();
+            const selectedStatus = document.querySelector(`input[name=${q.id}Status]checked`).value;
+
+            bbcode += `● [b][size=13pt]${q.title}[size][b]n`;
+            bbcode += `[size=2] [i]${value}[i]  [size]nn`;
+            bbcode += `[color=${getColorForStatus(selectedStatus)}][b]${selectedStatus}[b][color]nn`;
+            bbcode += `[hr]nn`;
+
+            stage++;
+        }
+
+        progress += 6.6;
+        loadingProgress.style.width = `${progress}%`;
+        loadingText.textContent = `BBCode Hazırlanıyor ${Math.round(progress)}%`;
+        const egitmenrutbe = document.getElementById(egitmenrutbe).value.trim();
+        const egitmenisim = document.getElementById(egitmenisim).value.trim();
+        const kanitlar = document.getElementById(kanitlar).value.trim();
+
+        if (progress = 100) {
+            clearInterval(interval);
+            bbcode += `Kanıtlandırılması gereken zorunlu konular; 10-55, 10-66, telsiz kullanımı, güç kullanımı, ekipman bilgisi ve miranda hakları.n`;
+            bbcode += `[spoiler=Görsel Kanıt Alanı (Zorunlu)]n`;
+            bbcode += `${kanitlar}n`; 
+            bbcode += `[spoiler]nn`;
+
+            
+            bbcode += `[right][b]SAHA EĞİTİM MEMURU[b]n`;
+            bbcode += `[b]${egitmenrutbe}[b] ${egitmenisim}n`;
+            bbcode += `[hr]n`;
+
+            bbcode += `[divbox]`;
+            document.getElementById(bbcodeOutput).value = bbcode;
+            loadingText.textContent = Kod Hazır;
+            setTimeout(() = {
+                document.getElementById(loadingContainer).style.display = none;
+            }, 0);
+        }
+    }, 0);
+}
+
+function getColorForStatus(status) {
+    switch (status) {
+        case Yeterli
+            return #32cd32;
+        case Orta
+            return #ffff00;
+        case Yetersiz
+            return #ff0000;
+        case Değerlendirilmedi
+            return #808080;
+        default
+            return #000;
+    }
+}
+        function copyToClipboard() {
+            const bbcodeOutput = document.getElementById(bbcodeOutput);
+            bbcodeOutput.select();
+            document.execCommand(copy);
+            alert(Rapor Kopyalandı);
+        }
+
+    script
+
+bodyhtml
