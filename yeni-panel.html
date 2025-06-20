@@ -250,6 +250,12 @@
             line-height: 1; 
         }
         
+        /* New Separator Style */
+        .menu-separator {
+            border-top: 1px solid var(--color-border);
+            margin: 15px 15px; /* Adjust spacing as needed */
+        }
+
         /* Tema değiştir ve Eski panele git butonları için ortak stiller */
         .sidebar-bottom-button {
             margin: 0 15px 10px 15px; /* Alt boşluğu azaltıldı, yanlardan 15px boşluk */
@@ -695,7 +701,7 @@
             <li><a href="#" id="menuPersonnel"><i class="fas fa-user-friends"></i> <span>Personel Arama</span></a></li>
             <li><a href="#" id="menuInventory"><i class="fas fa-box-open"></i> <span>Envanter Kaydı</span></a></li>
             <li><a href="#" id="menuSaat"><i class="fas fa-clock"></i> <span>Saat Hesaplama</span></a></li>
-        </ul>
+            <div class="menu-separator"></div> <li><a href="buros.html" id="menuBuros"><i class="fas fa-building"></i> <span>Bürolar</span></a></li> </ul>
         <div class="sidebar-bottom-buttons-wrapper">
             <button id="sidebarThemeToggle" class="sidebar-bottom-button" onclick="toggleTheme()">
                 <i class="fas fa-moon" id="themeIcon"></i> <span class="theme-text">Tema Değiştir</span>
@@ -918,6 +924,7 @@
                 } else if (pageId === 'SaatPage') {
                     document.getElementById('menuSaat').classList.add('active');
                 }
+                // No specific 'active' class for 'menuBuros' here as it navigates to a new page
             }
             
             // If navigating to FTP, ensure questions are created
