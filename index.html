@@ -184,7 +184,7 @@
         }
         
         /* Buttons */
-        .btn, .copy-btn, .btn-secondary, .theme-switcher {
+        .btn, .copy-btn, .btn-secondary, .theme-switcher, .other-page-btn { /* Added .other-page-btn */
             color: #fff;
             padding: 12px 20px;
             border: none;
@@ -196,7 +196,7 @@
             width: 100%;
         }
         
-        .btn:hover, .copy-btn:hover, .btn-secondary:hover, .theme-switcher:hover {
+        .btn:hover, .copy-btn:hover, .btn-secondary:hover, .theme-switcher:hover, .other-page-btn:hover { /* Added .other-page-btn */
             transform: translateY(-2px);
         }
         
@@ -225,6 +225,20 @@
             background-color: var(--color-secondary-hover);
         }
         
+        /* New button for "Diğer Sayfa" */
+        .other-page-btn {
+            background-color: var(--color-secondary); /* Using secondary color for consistency */
+            color: var(--color-text-primary);
+            margin-top: 10px; /* Add some space between this and the "Yönlendir" button */
+            text-decoration: none; /* Remove underline from anchor if used as a button */
+            display: block; /* Make it a block element to take full width */
+            text-align: center; /* Center the text */
+        }
+        .other-page-btn:hover {
+            background-color: var(--color-secondary-hover);
+        }
+
+
         /* Specific Elements */
         .output-container textarea {
             width: 100%;
@@ -326,6 +340,7 @@
                 </select>
             </div>
             <button class="btn" onclick="validateCharacter()">Yönlendir</button>
+            <button class="other-page-btn" onclick="window.location.href='diger-sayfa.html'">Yeni Panele Git</button>
             <div id="error-message" class="error-message"></div>
         </div>
     </div>
@@ -377,7 +392,7 @@
         </div>
     </div>
     <div id="SaatPage" class="container" style="display: none;">
-           <div class="page-header">
+            <div class="page-header">
             <h1>Saat Hesaplama</h1>
             <div>
                 <button class="btn-secondary" onclick="goBackToLogin()">&#8592; Geri Dön</button>
@@ -573,7 +588,7 @@
                         document.getElementById("loadingContainer").style.display = "none";
                     }, 1000);
                 }
-            }, 50); 
+            }, 50);    
         }
 
         function getColorForStatus(status) {
@@ -589,7 +604,7 @@
         function copyToClipboard() {
             const bbcodeOutput = document.getElementById("bbcodeOutput");
             bbcodeOutput.select();
-            bbcodeOutput.setSelectionRange(0, 99999); 
+            bbcodeOutput.setSelectionRange(0, 99999);    
             try {
                 document.execCommand("copy");
                 alert("Rapor kopyalandı canım :)");
