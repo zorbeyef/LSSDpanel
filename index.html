@@ -184,7 +184,7 @@
         }
         
         /* Buttons */
-        .btn, .copy-btn, .btn-secondary, .theme-switcher, .other-page-btn { /* Added .other-page-btn */
+        .btn, .copy-btn, .btn-secondary, .theme-switcher, .other-page-btn, .lspd-panel-btn { /* Added .lspd-panel-btn */
             color: #fff;
             padding: 12px 20px;
             border: none;
@@ -196,7 +196,7 @@
             width: 100%;
         }
         
-        .btn:hover, .copy-btn:hover, .btn-secondary:hover, .theme-switcher:hover, .other-page-btn:hover { /* Added .other-page-btn */
+        .btn:hover, .copy-btn:hover, .btn-secondary:hover, .theme-switcher:hover, .other-page-btn:hover, .lspd-panel-btn:hover { /* Added .lspd-panel-btn */
             transform: translateY(-2px);
         }
         
@@ -280,6 +280,26 @@
 }
         .other-page-btn:hover {
             background-color: var(--color-secondary-hover);
+        }
+
+        /* LSPD Panel Buton Stili */
+        .lspd-panel-btn {
+            background-color: #2c3e50; /* Koyu mavimsi */
+            color: #fff;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            transition: background-color 0.3s, transform 0.2s;
+            width: 100%; /* Diğer butonlarla aynı genişlikte olması için */
+            margin-top: 10px; /* Üstündeki butondan biraz boşluk bırakmak için */
+        }
+
+        .lspd-panel-btn:hover {
+            background-color: #34495e; /* Hover durumunda biraz daha açık koyu mavi */
+            transform: translateY(-2px);
         }
 
 
@@ -384,6 +404,7 @@
                 </select>
             </div>
             <button class="btn" onclick="validateCharacter()">Yönlendir</button>
+            <button class="lspd-panel-btn" onclick="window.location.href='pdpanel.html'">LSPD Paneline Git</button>
             <button class="other-page-btn" onclick="window.location.href='yeni-panel.html'">Yeni Panele Git</button>
             <div id="error-message" class="error-message"></div>
         </div>
@@ -405,7 +426,7 @@
 
         <div class="form-group">
             <label for="kanitlar">Devriye Kanıtları</label>
-            <input type="text" id="kanitlar" placeholder="Zorunlu konular için kanıt linklerini buraya girin.">
+            <input type="text" id="kanitlar" placeholder="Zorunlu konular için kanıt linklerini buraya girin. (10-55, 10-66, Telsiz Kullanımı, Güç Kullanımı, Olay Bölgesi, Ekipman Bilgisi, Miranda Hakları)">
         </div>
 
         <div class="form-group">
