@@ -4,53 +4,51 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="https://www.rina-roleplay.com/gtav/Themes/default/images/boardicons/3.png" type="image/x-icon" />
+    <link rel="icon" href="https://www.rina-roleplay.com/gtav/Themes/default/images/boardicons/2.png" type="image/x-icon" />
     <title>LSSD Panel - Bürolar</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        /* CSS Variables for Theming - Updated for LASD Official Colors */
         :root {
-            --color-bg: #EAEFF2; /* Light Off-White/Grey for background */
-            --color-surface: #FFFFFF; /* Pure White for cards/sidebar */
-            --color-primary: #004D99; /* Deep Blue (Primary branding color, can be LASD blue) */
-            --color-primary-hover: #003D7A; /* Darker Blue on Hover */
-            --color-secondary: #D1D8E2; /* Light Blue-Gray for secondary elements */
-            --color-secondary-hover: #BCC4CE; /* Slightly Darker secondary on hover */
-            --color-lasd-green: #013220; /* Dark Forest Green (Sheriff Green) */
-            --color-lasd-gold: #B8860B; /* Dark Goldenrod (Gold accent) */
-            --color-text-primary: #2C3E50; /* Dark Blue-Gray for main text (retained good readability) */
-            --color-text-secondary: #607D8B; /* Muted Blue-Gray for secondary text */
-            --color-border: #BEC9D5; /* Medium Light Blue-Gray for borders */
-            --color-success: #28A745; /* Standard Green for success messages */
+            --color-bg: #EAEFF2;
+            --color-surface: #FFFFFF;
+            --color-primary: #004D99;
+            --color-primary-hover: #003D7A;
+            --color-secondary: #D1D8E2;
+            --color-secondary-hover: #BCC4CE;
+            --color-lasd-green: #013220;
+            --color-lasd-gold: #B8860B;
+            --color-text-primary: #2C3E50;
+            --color-text-secondary: #607D8B;
+            --color-border: #BEC9D5;
+            --color-success: #28A745;
             --color-success-hover: #218838;
-            --color-error: #DC3545; /* Standard Red for error messages */
+            --color-error: #DC3545;
             --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             --font-family-primary: 'Roboto', sans-serif;
             --font-family-secondary: 'Open Sans', sans-serif;
             --sidebar-width-open: 280px;
-            --sidebar-width-closed: 70px; /* Minimal width when closed */
+            --sidebar-width-closed: 70px;
         }
 
-        html[data-theme='dark'] { /* Dark theme adjusted for a more subdued, professional dark look with LASD accents */
-            --color-bg: #1A202C; /* Dark Slate Gray */
-            --color-surface: #2D3748; /* Darker Slate Gray for cards/sidebar */
-            --color-primary: #3A7BFD; /* Bright Blue (retained for contrast in dark mode, or use a darker green/gold) */
+        html[data-theme='dark'] {
+            --color-bg: #1A202C;
+            --color-surface: #2D3748;
+            --color-primary: #3A7BFD;
             --color-primary-hover: #2F65D6;
-            --color-secondary: #4A5568; /* Muted Dark Gray */
+            --color-secondary: #4A5568;
             --color-secondary-hover: #5A6A80;
-            --color-lasd-green: #005C33; /* Slightly brighter green for dark mode */
-            --color-lasd-gold: #D4AF37; /* Brighter gold for dark mode */
-            --color-text-primary: #E2E8F0; /* Off-white */
-            --color-text-secondary: #A0AEC0; /* Light Gray-Blue */
+            --color-lasd-green: #005C33;
+            --color-lasd-gold: #D4AF37;
+            --color-text-primary: #E2E8F0;
+            --color-text-secondary: #A0AEC0;
             --color-border: #4A5568;
             --shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
         }
 
-        /* General Styles */
         body {
-            font-family: var(--font-family-primary); /* Primary font for body */
+            font-family: var(--font-family-primary);
             background-color: var(--color-bg);
             color: var(--color-text-primary);
             margin: 0;
@@ -58,14 +56,13 @@
             height: 100vh;
             overflow: hidden;
             transition: background-color 0.3s, color 0.3s;
-            background-image: url('https://i.imgur.com/IeBBpN7.png'); /* Keep the background image */
+            background-image: url('https://i.imgur.com/IeBBpN7.png');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
             display: flex;
         }
 
-        /* Overlay for blur and darkness */
         body::before {
             content: '';
             position: fixed;
@@ -79,11 +76,10 @@
             z-index: 0;
         }
 
-        /* Sidebar Styles */
         .sidebar {
             width: var(--sidebar-width-open);
             background-color: var(--color-surface);
-            padding: 20px 0; /* Padding only top/bottom */
+            padding: 20px 0;
             box-shadow: var(--shadow);
             border-right: 1px solid var(--color-border);
             position: fixed;
@@ -94,14 +90,13 @@
             transition: width 0.3s ease-in-out, transform 0.3s ease-in-out;
             display: flex;
             flex-direction: column;
-            overflow-x: hidden; /* Prevent horizontal scroll */
+            overflow-x: hidden;
         }
 
         .sidebar.collapsed {
             width: var(--sidebar-width-closed);
         }
 
-        /* Hide elements when sidebar is collapsed */
         .sidebar.collapsed .sidebar-header h3,
         .sidebar.collapsed .sidebar-menu span {
             opacity: 0;
@@ -109,20 +104,20 @@
             pointer-events: none;
             width: 0;
             overflow: hidden;
-            white-space: nowrap; /* Prevents wrapping before hiding */
+            white-space: nowrap;
         }
 
         .sidebar.collapsed .sidebar-header img {
-            width: 40px; /* Smaller logo when collapsed */
-            margin-bottom: 0; /* Align to top when text hides */
+            width: 40px;
+            margin-bottom: 0;
             transition: width 0.3s ease-in-out;
         }
         
         .sidebar.collapsed .sidebar-menu a {
-            justify-content: center; /* Center icons */
-            padding: 12px 0; /* Adjust padding for icon-only display */
-            height: 48px; /* Fixed height for consistent centering */
-            box-sizing: border-box; /* Include padding in height */
+            justify-content: center;
+            padding: 12px 0;
+            height: 48px;
+            box-sizing: border-box;
         }
 
 
@@ -151,7 +146,6 @@
             transition: opacity 0.3s ease-in-out;
         }
 
-        /* Toggle button inside sidebar header */
         .sidebar-toggle-btn {
             position: absolute;
             top: 15px;
@@ -167,13 +161,12 @@
             z-index: 110;
         }
         
-        /* Specific positioning for internal toggle when sidebar is collapsed */
         .sidebar.collapsed .sidebar-toggle-btn.internal {
             position: relative;
             width: 100%;
             top: 0;
             right: 0;
-            background-color: var(--color-primary); /* Use primary color for collapsed toggle */
+            background-color: var(--color-primary);
             color: white;
             padding: 12px 0;
             font-size: 1rem;
@@ -186,20 +179,17 @@
             transform: translateY(-1px);
         }
         
-        /* Internal toggle visibility */
         .sidebar:not(.collapsed) .sidebar-toggle-btn.internal {
-            display: block; /* Always show when sidebar is open, as it's the primary way to close */
+            display: block;
         }
         .sidebar.collapsed .sidebar-toggle-btn.internal {
-            display: block; /* Always show when collapsed, as it's the primary way to open */
+            display: block;
         }
 
-        /* Hide external toggle on desktop */
         #sidebarExternalToggleBtn {
             display: none; 
         }
 
-        /* Re-position the internal toggle when sidebar is open for better aesthetics */
         .sidebar:not(.collapsed) .sidebar-toggle-btn.internal {
             position: absolute;
             top: 15px;
@@ -229,7 +219,7 @@
             align-items: center;
             gap: 10px;
             padding: 10px 15px;
-            background-color: var(--color-bg); /* Use background color for menu item, not surface */
+            background-color: var(--color-bg);
             color: var(--color-text-primary);
             text-decoration: none;
             border-radius: 8px;
@@ -237,7 +227,7 @@
             font-weight: 500;
             font-size: 0.95rem;
             white-space: nowrap;
-            font-family: var(--font-family-secondary); /* Menu items can use secondary font */
+            font-family: var(--font-family-secondary);
         }
 
         .sidebar-menu a:hover,
@@ -250,20 +240,18 @@
             line-height: 1; 
         }
         
-        /* New Separator Style */
         .menu-separator {
             border-top: 1px solid var(--color-border);
-            margin: 15px 15px; /* Adjust spacing as needed */
+            margin: 15px 15px;
         }
 
-        /* Tema değiştir ve Eski panele git butonları için ortak stiller */
         .sidebar-bottom-button {
-            margin: 0 15px 10px 15px; /* Alt boşluğu azaltıldı, yanlardan 15px boşluk */
+            margin: 0 15px 10px 15px;
             padding: 10px 15px;
             display: flex;
             align-items: center;
-            justify-content: flex-start; /* Metin sola hizalı */
-            gap: 8px; /* İkon ve metin arası boşluk */
+            justify-content: flex-start;
+            gap: 8px;
             background-color: var(--color-secondary);
             color: var(--color-text-primary);
             text-decoration: none;
@@ -273,10 +261,10 @@
             font-size: 0.95rem;
             white-space: nowrap;
             font-family: var(--font-family-secondary);
-            box-sizing: border-box; /* Include padding in dimensions */
-            width: calc(100% - 30px); /* 100% genişlik - sol ve sağ boşluk */
-            cursor: pointer; /* Buton olduğu için imleç */
-            border: none; /* Butonun varsayılan kenarlığını kaldır */
+            box-sizing: border-box;
+            width: calc(100% - 30px);
+            cursor: pointer;
+            border: none;
         }
 
         .sidebar-bottom-button:hover {
@@ -288,7 +276,6 @@
             transition: margin-right 0.3s ease-in-out;
         }
         
-        /* Tema değiştir ve Eski panele git metinleri küçüldüğünde gizle */
         .sidebar.collapsed .sidebar-bottom-button .theme-text {
             opacity: 0;
             transition: opacity 0.1s ease-in-out;
@@ -297,25 +284,22 @@
             white-space: nowrap;
         }
 
-        /* Tema değiştir ve Eski panele git butonları sidebar küçüldüğünde */
         .sidebar.collapsed .sidebar-bottom-button {
-            justify-content: center; /* İkonu ortala */
-            padding: 10px 0; /* Dikey boşluğu ayarla */
-            width: calc(var(--sidebar-width-closed) - 30px); /* Genişliği sidebar genişliğine göre ayarla */
-            margin: 0 15px 10px 15px; /* Aynı boşlukları koru */
+            justify-content: center;
+            padding: 10px 0;
+            width: calc(var(--sidebar-width-closed) - 30px);
+            margin: 0 15px 10px 15px;
         }
         
-        /* Alt kısımdaki butonları en alta itmek için */
         .sidebar-bottom-buttons-wrapper {
-            margin-top: auto; /* Push buttons to the bottom */
-            padding-bottom: 20px; /* Alttan boşluk */
+            margin-top: auto;
+            padding-bottom: 20px;
             display: flex;
             flex-direction: column;
-            gap: 8px; /* Butonlar arası boşluk */
+            gap: 8px;
         }
 
 
-        /* Main Content Area */
         .main-content {
             flex-grow: 1;
             margin-left: var(--sidebar-width-open);
@@ -334,7 +318,6 @@
             margin-left: var(--sidebar-width-closed);
         }
 
-        /* Selection Page (main menu) */
         .selection-container {
             width: 100%;
             max-width: 350px;
@@ -363,7 +346,6 @@
             font-family: var(--font-family-secondary);
         }
 
-        /* Ensure .container takes full width in main-content */
         .container {
             max-width: 800px;
             width: 100%;
@@ -378,7 +360,6 @@
             box-sizing: border-box;
         }
 
-        /* Page Header with Back Button and Theme Toggle */
         .page-header {
             display: flex;
             justify-content: space-between;
@@ -408,7 +389,6 @@
             font-family: var(--font-family-primary);
         }
 
-        /* Form Elements */
         .form-group {
             margin-bottom: 25px;
         }
@@ -421,11 +401,26 @@
             color: var(--color-text-secondary);
             font-family: var(--font-family-secondary);
         }
+        
+        .form-group .time-display-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        .form-group .time-display-row label {
+            margin-bottom: 0;
+            white-space: nowrap;
+        }
+        .form-group .time-display-row span {
+            flex-grow: 1;
+        }
+
 
         .form-group input[type="text"],
         .form-group input[type="time"],
-        .form-group input[type="number"], /* Added for number inputs */
-        .form-group input[type="date"], /* Added for date inputs */
+        .form-group input[type="number"],
+        .form-group input[type="date"],
         .form-group select,
         .form-group textarea {
             width: calc(100% - 24px);
@@ -444,7 +439,6 @@
             resize: vertical;
         }
 
-        /* Buttons */
         .btn, .copy-btn, .btn-secondary, .theme-switcher {
             padding: 12px 20px;
             border-radius: 8px;
@@ -470,7 +464,7 @@
         .btn-secondary {
             background-color: var(--color-secondary);
             color: var(--color-text-primary);
-            width: auto; /* Make it auto for better fit in layout */
+            width: auto;
         }
         .btn-secondary:hover {
             background-color: var(--color-secondary-hover);
@@ -478,13 +472,13 @@
         }
 
         .copy-btn {
-            background-color: var(--color-lasd-green); /* Use LASD Green for Copy button */
+            background-color: var(--color-lasd-green);
             color: #fff;
             width: 100%;
             margin-top: 15px;
         }
         .copy-btn:hover {
-            background-color: var(--color-success-hover); /* Slightly darker green on hover */
+            background-color: var(--color-success-hover);
             transform: translateY(-1px);
         }
 
@@ -497,7 +491,6 @@
             background-color: var(--color-secondary-hover);
         }
 
-        /* Specific Elements */
         .output-container textarea {
             height: 300px;
             padding: 15px;
@@ -522,7 +515,7 @@
         .loading-progress {
             height: 100%;
             width: 0%;
-            background-color: var(--color-lasd-gold); /* Use LASD Gold for progress bar */
+            background-color: var(--color-lasd-gold);
             border-radius: 5px;
             transition: width 0.3s ease-out;
         }
@@ -597,11 +590,10 @@
             font-size: 1.2rem;
             font-weight: 600;
             text-align: center;
-            color: var(--color-primary); /* Use primary color for results */
+            color: var(--color-primary);
             font-family: var(--font-family-primary);
         }
 
-        /* Responsive adjustments */
         @media (max-width: 768px) {
             .sidebar {
                 width: 0;
@@ -625,7 +617,6 @@
                 margin-left: 0;
             }
             
-            /* Show external sidebar toggle button explicitly on mobile, position fixed */
             #sidebarExternalToggleBtn {
                 position: fixed;
                 left: 15px;
@@ -635,11 +626,9 @@
                 display: block !important;
                 z-index: 120;
             }
-            /* Hide the internal toggle button when sidebar is open on mobile */
             .sidebar.open .sidebar-toggle-btn.internal {
                 display: none !important; 
             }
-            /* When sidebar is collapsed on mobile, the internal button is also hidden, so external one should be shown */
             .sidebar.collapsed .sidebar-toggle-btn.internal {
                  display: none !important;
             }
@@ -666,33 +655,29 @@
                 width: 100%;
             }
             
-            /* Mobil görünümde alt butonların boşluklarını ayarla */
             .sidebar-bottom-buttons-wrapper {
                 padding-bottom: 10px;
-                margin-top: auto; /* Push buttons to the bottom */
+                margin-top: auto;
             }
             .sidebar-bottom-button {
                 margin-left: 15px;
                 margin-right: 15px;
                 width: calc(100% - 30px);
             }
-            /* Menü küçüldüğünde ikonları ortala */
             .sidebar.collapsed .sidebar-bottom-button {
                 justify-content: center;
             }
-            /* Mobil cihazlarda tema değiştir ve eski panele git butonlarının metinlerini gizle */
             .sidebar.collapsed .sidebar-bottom-button .theme-text {
                 opacity: 0;
                 width: 0;
             }
         }
 
-        /* Yeni Bürolar Sayfası İçin CSS */
         .buros-tabs {
             display: flex;
             margin-bottom: 20px;
             border-bottom: 1px solid var(--color-border);
-            flex-wrap: wrap; /* Sekmeler sığmadığında alt satıra geçsin */
+            flex-wrap: wrap;
         }
 
         .buros-tabs button {
@@ -706,7 +691,7 @@
             transition: background-color 0.2s, color 0.2s;
             border-top-left-radius: 8px;
             border-top-right-radius: 8px;
-            margin-right: 5px; /* Sekmeler arasında boşluk */
+            margin-right: 5px;
         }
 
         .buros-tabs button:hover {
@@ -716,12 +701,12 @@
         .buros-tabs button.active {
             background-color: var(--color-primary);
             color: #fff;
-            border-bottom: 2px solid var(--color-primary); /* Aktif sekmeye vurgu */
+            border-bottom: 2px solid var(--color-primary);
         }
 
         .buros-tab-content {
             padding: 20px 0;
-            border-top: none; /* Üst kenarlığı kaldır */
+            border-top: none;
         }
 
         .buros-sub-options {
@@ -747,38 +732,35 @@
             background-color: var(--color-secondary);
         }
 
-        /* Pasif (kırmızı) seçenekler için stil */
         .buros-sub-option-card.passive {
-            background-color: #fdd; /* Açık kırmızı */
-            color: var(--color-error); /* Kırmızı metin */
+            background-color: #fdd;
+            color: var(--color-error);
             border-color: var(--color-error);
-            cursor: not-allowed; /* İmleci yasak işareti yap */
+            cursor: not-allowed;
         }
         .buros-sub-option-card.passive:hover {
-            background-color: #fcc; /* Hafif koyu kırmızı */
-            transform: none; /* Hover efektini kaldır */
+            background-color: #fcc;
+            transform: none;
         }
         .buros-sub-option-card.passive h4 {
-            color: var(--color-error); /* Başlık da kırmızı olsun */
+            color: var(--color-error);
         }
         
-        /* Yeni Rapor Sayfası */
         .report-page {
-            display: none; /* Başlangıçta gizli */
+            display: none;
         }
 
-        /* Vaka bloğu stilizasyonu */
         .vaka-block, .personel-block {
             background-color: var(--color-bg);
             border: 1px solid var(--color-border);
             border-radius: 8px;
             padding: 20px;
             margin-bottom: 15px;
-            position: relative; /* For delete button positioning */
+            position: relative;
         }
 
         .vaka-block .form-group, .personel-block .form-group {
-            margin-bottom: 15px; /* Adjust spacing within block */
+            margin-bottom: 15px;
         }
         
         .delete-vaka-btn, .delete-personel-btn {
@@ -806,15 +788,15 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            margin-bottom: 10px; /* Daha sıkı aralık */
+            margin-bottom: 10px;
         }
         .personel-block .form-group label {
-            min-width: 100px; /* Etiket için sabit genişlik */
+            min-width: 100px;
             margin-bottom: 0;
         }
         .personel-block .form-group input {
-            flex-grow: 1; /* Input alanlarının genişlemesini sağlar */
-            width: auto; /* Otomatik genişlik */
+            flex-grow: 1;
+            width: auto;
         }
 
 
@@ -907,7 +889,7 @@
             <div id="TSD" class="buros-tab-content" style="display:none;">
                 <h3>TSD Bürosu Seçenekleri</h3>
                 <div class="buros-sub-options">
-                    <div class="buros-sub-option-card passive"><h4>Pasif</h4></div>
+                    <div class="buros-sub-option-card" onclick="openReportPage('TSD', 'SahaRaporlandirmasi')"><h4>Saha Raporlandırması</h4></div>
                     <div class="buros-sub-option-card passive"><h4>Pasif</h4></div>
                     <div class="buros-sub-option-card passive"><h4>Pasif</h4></div>
                     <div class="buros-sub-option-card passive"><h4>Pasif</h4></div>
@@ -927,7 +909,7 @@
             
             <div id="aeroSahaReportForm" class="report-form" style="display:none;">
                 <div class="form-group">
-                    <label for="aeroSahaRaporNo">Rapor Numarası:</label>
+                    <label for="aeroSahaRaporNo">Rapor Numarası (varsa):</label>
                     <input type="text" id="aeroSahaRaporNo" placeholder="Rapor numarasını girin" oninput="generateAeroSahaBBCode()">
                 </div>
                 <div class="form-group">
@@ -958,13 +940,13 @@
                     <label for="aeroSahaBBCodeOutput">Oluşturulan BBCode:</label>
                     <textarea id="aeroSahaBBCodeOutput" rows="15" readonly></textarea>
                     <button type="button" class="copy-btn" onclick="copyAeroSahaBBCode()">BBCode Kopyala</button>
-                    <button type="button" class="btn" onclick="redirectToForum('https://www.rina-roleplay.com/gtav/index.php?topic=21455.new#new')">Beni Yönlendir</button>
+                    <button type="button" class="btn" onclick="redirectToForum('https://www.rina-roleplay.com/gtav/index.php?topic=21468.new#new')">Beni Yönlendir</button>
                 </div>
             </div>
 
             <div id="aeroHaftalikReportForm" class="report-form" style="display:none;">
                 <div class="form-group">
-                    <label for="haftalikRaporNo">Rapor Numarası:</label>
+                    <label for="haftalikRaporNo">Rapor Numarası (varsa):</label>
                     <input type="text" id="haftalikRaporNo" placeholder="Rapor numarasını girin" oninput="generateAeroHaftalikBBCode()">
                 </div>
                 <div class="form-group">
@@ -985,7 +967,7 @@
                     <label for="aeroHaftalikBBCodeOutput">Oluşturulan BBCode:</label>
                     <textarea id="aeroHaftalikBBCodeOutput" rows="15" readonly></textarea>
                     <button type="button" class="copy-btn" onclick="copyAeroHaftalikBBCode()">BBCode Kopyala</button>
-                    <button type="button" class="btn" onclick="redirectToForum('https://www.rina-roleplay.com/gtav/index.php?topic=21468.new#new')">Beni Yönlendir</button>
+                    <button type="button" class="btn" onclick="redirectToForum('https://www.rina-roleplay.com/gtav/index.php?topic=21455.new#new')">Beni Yönlendir</button>
                 </div>
             </div>
 
@@ -1022,12 +1004,61 @@
                 </div>
             </div>
 
+            <div id="tsdSahaReportForm" class="report-form" style="display:none;">
+                <div class="form-group">
+                    <label for="tsdSahaRaporNo">Rapor Numarası:</label>
+                    <input type="text" id="tsdSahaRaporNo" placeholder="Rapor Numarası" oninput="generateTsdSahaBBCode()">
+                </div>
+                <div class="form-group">
+                    <label for="tsdSahaRaporlayanMemur">Raporu Giren Personel:</label>
+                    <input type="text" id="tsdSahaRaporlayanMemur" placeholder="Örn. Will Winter" oninput="generateTsdSahaBBCode()">
+                </div>
+                <div class="form-group">
+                    <label for="tsdSahaDevriyePartnerleri">Devriye Partnerleri:</label>
+                    <input type="text" id="tsdSahaDevriyePartnerleri" placeholder="Yoksa boş bırakın." oninput="generateTsdSahaBBCode()">
+                </div>
+                <div class="form-group">
+                    <label for="tsdSahaBirimKodu">Birim Kodu:</label>
+                    <input type="text" id="tsdSahaBirimKodu" placeholder="Örn. 22T" oninput="generateTsdSahaBBCode()">
+                </div>
+                 <div class="form-group">
+                    <label for="tsdSahaToplamDevriyeSaati">Toplam Devriye Saati:</label>
+                    <input type="text" id="tsdSahaToplamDevriyeSaati" placeholder="Başlangıç, bitiş saatini doldurduğunuzda otomatik dolar." oninput="generateTsdSahaBBCode()">
+                </div>
+                <div class="form-group">
+                    <label for="patrolStartTime">Devriye Başlangıç Saati:</label>
+                    <input type="time" id="patrolStartTime" onchange="calculatePatrolTime()">
+                </div>
+                <div class="form-group">
+                    <label for="patrolEndTime">Devriye Bitiş Saati:</label>
+                    <input type="time" id="patrolEndTime" onchange="calculatePatrolTime()">
+                </div>
+                <div class="form-group time-display-row">
+                    <label>Toplam Devriye Süresi:</label>
+                    <span id="totalPatrolTimeDisplay" style="font-weight: bold;">00 Saat 00 Dakika</span>
+                </div>
+                <div class="form-group">
+                    <label for="tsdSahaTarih">Tarih:</label>
+                    <input type="date" id="tsdSahaTarih" oninput="generateTsdSahaBBCode()">
+                </div>
+                <div class="form-group">
+                    <label for="tsdSahaKanit">Kanıt Linki:</label>
+                    <input type="text" id="tsdSahaKanit" placeholder="Kanıt linki (imgur vb.)" oninput="generateTsdSahaBBCode()">
+                </div>
+
+                <div class="form-group output-container" style="margin-top: 30px;">
+                    <label for="tsdSahaBBCodeOutput">Oluşturulan BBCode:</label>
+                    <textarea id="tsdSahaBBCodeOutput" rows="15" readonly></textarea>
+                    <button type="button" class="copy-btn" onclick="copyTsdSahaBBCode()">BBCode Kopyala</button>
+                    <button type="button" class="btn" onclick="redirectToForum('https://www.rina-roleplay.com/gtav/index.php?topic=9596.new#new')">Beni Yönlendir</button>
+                </div>
+            </div>
+
             </div>
 
     </div>
 
     <script>
-        // --- Sidebar & Theme Functions (Copied from yeni-panel.html and adapted for buros.html) ---
         const htmlEl = document.documentElement;
         const sidebar = document.getElementById('sidebar');
         const mainContent = document.getElementById('mainContent');
@@ -1035,7 +1066,6 @@
         const sidebarInternalToggleBtn = document.getElementById('sidebarInternalToggleBtn');
         const menuLinks = document.querySelectorAll('.sidebar-menu a');
         
-        // Apply saved theme on load
         const savedTheme = localStorage.getItem('theme') || 'dark';
         htmlEl.setAttribute('data-theme', savedTheme);
         updateThemeIcon(savedTheme);
@@ -1082,7 +1112,6 @@
             }
         }
 
-        // Event listener for the external sidebar toggle button
         sidebarExternalToggleBtn.addEventListener('click', function() {
             if (window.innerWidth <= 768) {
                 toggleSidebarMobile();
@@ -1091,7 +1120,6 @@
             }
         });
 
-        // Event listener for the internal sidebar toggle button
         sidebarInternalToggleBtn.addEventListener('click', function() {
             if (window.innerWidth > 768) {
                 toggleSidebarDesktop();
@@ -1100,7 +1128,6 @@
             }
         });
 
-        // Initial setup based on screen size
         window.addEventListener('load', () => {
             if (window.innerWidth <= 768) {
                 sidebar.classList.add('collapsed');
@@ -1109,23 +1136,17 @@
                 sidebarExternalToggleBtn.style.display = 'block';
                 isSidebarOpenMobile = false;
             } else {
-                // On desktop, the sidebar should start collapsed for content pages like buros.html
-                sidebar.classList.add('collapsed'); // This is the change
-                mainContent.classList.add('sidebar-collapsed-margin'); // This is the change
-                sidebar.classList.remove('open'); // Ensure no "open" class from mobile
+                sidebar.classList.add('collapsed');
+                mainContent.classList.add('sidebar-collapsed-margin');
+                sidebar.classList.remove('open');
                 sidebarExternalToggleBtn.style.display = 'none';
-                isSidebarOpenDesktop = false; // Set desktop state to collapsed
+                isSidebarOpenDesktop = false;
             }
-            // Ensure Bürolar link is active on buros.html
             document.getElementById('menuBuros').classList.add('active');
             
-            // On buros.html, we don't have multiple main pages to switch, so
-            // the main content area (burosSelectionPage) will always be visible by default.
-            // On load, ensure the first tab (AERO) is displayed.
-            document.querySelector('.buros-tabs .tab-button').click(); // Clicks the first button (AERO)
+            document.querySelector('.buros-tabs .tab-button').click();
         });
 
-        // Re-evaluate sidebar state on window resize
         window.addEventListener('resize', () => {
             if (window.innerWidth <= 768) {
                 if (isSidebarOpenDesktop) {
@@ -1137,140 +1158,123 @@
                 }
                 sidebarExternalToggleBtn.style.display = 'block';
             } else {
-                // When resizing to desktop, if it was collapsed on mobile, keep it collapsed on desktop
                 if (!isSidebarOpenDesktop) { 
-                    sidebar.classList.add('collapsed'); // Keep collapsed
-                    mainContent.classList.add('sidebar-collapsed-margin'); // Apply margin
-                } else { // If it was already open somehow (e.g. from desktop initial state), keep open
+                    sidebar.classList.add('collapsed');
+                    mainContent.classList.add('sidebar-collapsed-margin');
+                } else {
                      sidebar.classList.remove('collapsed');
                      mainContent.classList.remove('sidebar-collapsed-margin');
                 }
-                sidebar.classList.remove('open'); // Remove mobile "open"
+                sidebar.classList.remove('open');
                 sidebarExternalToggleBtn.style.display = 'none';
             }
         });
 
-        // --- Bürolar Page Specific Functions ---
-        let currentReportFormId = ''; // To keep track of the currently active report form
+        let currentReportFormId = '';
 
         function openBureauTab(evt, bureauName) {
             let i, tabcontent, tabbuttons;
             
-            // Hide all tab content
             tabcontent = document.getElementsByClassName("buros-tab-content");
             for (i = 0; i < tabcontent.length; i++) {
                 tabcontent[i].style.display = "none";
             }
             
-            // Deactivate all tab buttons
             tabbuttons = document.getElementsByClassName("tab-button");
             for (i = 0; i < tabbuttons.length; i++) {
                 tabbuttons[i].className = tabbuttons[i].className.replace(" active", "");
             }
             
-            // Show the specific tab content, activate the button, and hide report page if visible
             document.getElementById(bureauName).style.display = "block";
             evt.currentTarget.className += " active";
             
-            // Ensure the main selection page is visible and report page is hidden
             document.getElementById('burosSelectionPage').style.display = 'block';
             document.getElementById('reportPage').style.display = 'none';
             
-            // Hide all specific report forms when switching bureau tabs
             document.querySelectorAll('.report-form').forEach(form => {
                 form.style.display = 'none';
             });
-            currentReportFormId = ''; // Reset current form
+            currentReportFormId = '';
         }
 
-        // Function to open a specific report page
         function openReportPage(bureau, reportType) {
-            // Check if the clicked card is passive
-            const clickedCard = event.currentTarget; // 'event' is available in the click handler
+            const clickedCard = event.currentTarget;
             if (clickedCard.classList.contains('passive')) {
                 alert('Bu rapor seçeneği şuan pasiftir.');
-                return; // Stop execution if passive
+                return;
             }
 
-            // Hide the bureau selection page
             document.getElementById('burosSelectionPage').style.display = 'none';
-            // Show the report page
             document.getElementById('reportPage').style.display = 'block';
 
-            // Update report page title
             const readableReportType = reportType.replace(/([A-Z])/g, ' $1').trim();
-            document.getElementById('reportPageTitle').textContent = `${bureau} - ${readableReportType} Raporu`; 
+            document.getElementById('reportPageTitle').textContent = `${bureau} - ${readableReportType}     `; 
             
-            // Hide all specific report forms first
             document.querySelectorAll('.report-form').forEach(form => {
                 form.style.display = 'none';
             });
 
-            // Show the correct report form based on bureau and reportType
             let formIdToShow = '';
             if (bureau === 'AERO' && reportType === 'SahaRaporlandirmasi') {
                 formIdToShow = 'aeroSahaReportForm';
-                // Initialize a default vaka block if none exist
                 if (document.getElementById('aeroSahaVakaContainer').children.length === 0) {
                     addAeroSahaVaka(); 
                 }
-                generateAeroSahaBBCode(); // Generate initial BBCode
+                generateAeroSahaBBCode();
             } else if (bureau === 'AERO' && reportType === 'HaftalikRaporlandirma') {
                 formIdToShow = 'aeroHaftalikReportForm';
-                // Set current date for Haftalık Rapor
                 const today = new Date();
                 const year = today.getFullYear();
                 const month = String(today.getMonth() + 1).padStart(2, '0');
                 const day = String(today.getDate()).padStart(2, '0');
                 document.getElementById('haftalikTarih').value = `${year}-${month}-${day}`;
                 
-                // Initialize a default personel block if none exist
                 if (document.getElementById('aeroHaftalikPersonelContainer').children.length === 0) {
                     addAeroHaftalikPersonel(); 
                 }
-                generateAeroHaftalikBBCode(); // Generate initial BBCode
+                generateAeroHaftalikBBCode();
             } else if (bureau === 'SEB' && reportType === 'SahaRaporlandirmasi') {
                 formIdToShow = 'sebSahaReportForm';
                 if (document.getElementById('sebSahaVakaContainer').children.length === 0) {
                     addSebSahaVaka();
                 }
                 generateSebSahaBBCode();
+            } else if (bureau === 'TSD' && reportType === 'SahaRaporlandirmasi') {
+                formIdToShow = 'tsdSahaReportForm';
+                const today = new Date();
+                const year = today.getFullYear();
+                const month = String(today.getMonth() + 1).padStart(2, '0');
+                const day = String(today.getDate()).padStart(2, '0');
+                document.getElementById('tsdSahaTarih').value = `${year}-${month}-${day}`;
+                calculatePatrolTime();
+                generateTsdSahaBBCode();
             }
-            // Add more conditions here for other report types
             
             if (formIdToShow) {
                 document.getElementById(formIdToShow).style.display = 'block';
-                currentReportFormId = formIdToShow; // Set current form
-            } else {
-                // Fallback for not yet implemented forms
-                // This part won't be reached if all forms are defined
+                currentReportFormId = formIdToShow;
             }
         }
 
-        // Function to go back to the bureau selection page
         function showBurosSelectionPage() {
             document.getElementById('reportPage').style.display = 'none';
             document.getElementById('burosSelectionPage').style.display = 'block';
             
-            // Hide the specific report form when going back
             if (currentReportFormId) {
                 document.getElementById(currentReportFormId).style.display = 'none';
                 currentReportFormId = '';
             }
 
-            // Re-activate the currently selected bureau tab (or default to AERO)
             const activeTabButton = document.querySelector('.buros-tabs .tab-button.active');
             if (activeTabButton) {
                  const bureauName = activeTabButton.textContent.trim();
                  openBureauTab({ currentTarget: activeTabButton }, bureauName);
             } else {
-                 document.querySelector('.buros-tabs .tab-button').click(); // Default to AERO
+                 document.querySelector('.buros-tabs .tab-button').click();
             }
         }
 
-
-        // --- AERO Saha Raporlandırması Functions ---
-        let aeroVakaCounter = 0; // Global counter for unique IDs for Saha raporları
+        let aeroVakaCounter = 0;
 
         function addAeroSahaVaka() {
             aeroVakaCounter++;
@@ -1293,14 +1297,14 @@
                 </div>
             `;
             vakaContainer.appendChild(newVakaBlock);
-            generateAeroSahaBBCode(); // Regenerate BBCode after adding a new vaka
+            generateAeroSahaBBCode();
         }
 
         function deleteVaka(buttonElement) {
             const vakaBlock = buttonElement.closest('.vaka-block');
             if (vakaBlock) {
                 vakaBlock.remove();
-                generateAeroSahaBBCode(); // Regenerate BBCode after deleting a vaka
+                generateAeroSahaBBCode();
             }
         }
 
@@ -1318,7 +1322,6 @@
                 const ozeti = block.querySelector('.vaka-ozeti').value;
                 const kanit = block.querySelector('.vaka-kanit').value;
 
-                // Only add vaka if at least one field has content
                 if (saati || ozeti || kanit) {
                     vakaContent += `
 [color=maroon][b]Vaka Saati:[/b][/color] ${saati}
@@ -1328,16 +1331,15 @@
                 }
             });
 
-            // Ensure vakaContent is trimmed only if there are actual entries, otherwise it might add extra newlines
             if(vakaContent.trim() !== '') {
-                vakaContent = '\n' + vakaContent.trim(); // Add a newline before the first vaka if content exists
+                vakaContent = '\n' + vakaContent.trim();
             }
 
 
             let bbCode = `[center][img width=250]https://i.imgur.com/QpkI6L8.png[/img][/center]
 [center][size=4][b]Saha Raporlandırması[/b][/size][/center]
 
-[b]Rapor Numarası:[/b] ${raporNo || 'Yok'}
+[b]Rapor Numarası (varsa):[/b] ${raporNo || 'Yok'}
 [b]Raporlayan Memur:[/b] ${raporlayanMemur}
 [b]Devriye Partneri:[/b] ${devriyePartneri || 'Yok'}
 [b]Birim Kodu:[/b] ${birimKodu}
@@ -1346,7 +1348,7 @@
 ${vakaContent}
 [/spoiler]`;
 
-            document.getElementById('aeroSahaBBCodeOutput').value = bbCode.trim(); // .trim() removes leading/trailing whitespace
+            document.getElementById('aeroSahaBBCodeOutput').value = bbCode.trim();
         }
 
         function copyAeroSahaBBCode() {
@@ -1360,8 +1362,7 @@ ${vakaContent}
             window.open(url, '_blank');
         }
 
-        // --- AERO Haftalık Raporlandırması Functions ---
-        let personelCounter = 0; // Global counter for unique IDs for Haftalık raporları
+        let personelCounter = 0;
 
         function addAeroHaftalikPersonel() {
             personelCounter++;
@@ -1384,14 +1385,14 @@ ${vakaContent}
                 </div>
             `;
             personelContainer.appendChild(newPersonelBlock);
-            generateAeroHaftalikBBCode(); // Regenerate BBCode after adding new personnel
+            generateAeroHaftalikBBCode();
         }
 
         function deletePersonel(buttonElement) {
             const personelBlock = buttonElement.closest('.personel-block');
             if (personelBlock) {
                 personelBlock.remove();
-                generateAeroHaftalikBBCode(); // Regenerate BBCode after deleting personnel
+                generateAeroHaftalikBBCode();
             }
         }
 
@@ -1400,8 +1401,8 @@ ${vakaContent}
                 return '0 saat 0 dakika';
             }
             const hours = Math.floor(totalHoursDecimal);
-            const minutesDecimal = (totalHoursDecimal - hours) * 100; // Get the decimal part as minutes
-            const minutes = Math.round(minutesDecimal); // Round to nearest minute
+            const minutesDecimal = (totalHoursDecimal - hours) * 100;
+            const minutes = Math.round(minutesDecimal);
             
             return `${hours} saat ${minutes} dakika`;
         }
@@ -1409,7 +1410,7 @@ ${vakaContent}
         function generateAeroHaftalikBBCode() {
             const raporNo = document.getElementById('haftalikRaporNo').value;
             const raporuGirenPersonel = document.getElementById('haftalikRaporuGirenPersonel').value;
-            const tarih = document.getElementById('haftalikTarih').value; //YYYY-MM-DD formatında gelir
+            const tarih = document.getElementById('haftalikTarih').value;
 
             let personelListContent = '';
             const personelBlocks = document.querySelectorAll('#aeroHaftalikPersonelContainer .personel-block');
@@ -1425,10 +1426,9 @@ ${vakaContent}
                 }
             });
 
-            // Format the date to DD/MM/YYYY if it exists
             let formattedDate = '';
             if (tarih) {
-                const dateParts = tarih.split('-'); //YYYY-MM-DD
+                const dateParts = tarih.split('-');
                 if (dateParts.length === 3) {
                     formattedDate = `${dateParts[2]}/${dateParts[1]}/${dateParts[0]}`;
                 }
@@ -1464,8 +1464,7 @@ ${personelListContent}
         }
 
 
-        // --- SEB Saha Raporlandırması Functions ---
-        let sebVakaCounter = 0; // Global counter for unique IDs for SEB Saha raporları
+        let sebVakaCounter = 0;
 
         function addSebSahaVaka() {
             sebVakaCounter++;
@@ -1488,14 +1487,14 @@ ${personelListContent}
                 </div>
             `;
             vakaContainer.appendChild(newVakaBlock);
-            generateSebSahaBBCode(); // Regenerate BBCode after adding a new vaka
+            generateSebSahaBBCode();
         }
 
         function deleteSebVaka(buttonElement) {
             const vakaBlock = buttonElement.closest('.vaka-block');
             if (vakaBlock) {
                 vakaBlock.remove();
-                generateSebSahaBBCode(); // Regenerate BBCode after deleting a vaka
+                generateSebSahaBBCode();
             }
         }
 
@@ -1512,7 +1511,6 @@ ${personelListContent}
                 const ozeti = block.querySelector('.vaka-ozeti').value;
                 const kanit = block.querySelector('.vaka-kanit').value;
 
-                // Only add vaka if at least one field has content
                 if (saati || ozeti || kanit) {
                     vakaContent += `
 [color=maroon][b]Vaka Saati:[/b][/color] ${saati}
@@ -1522,9 +1520,8 @@ ${personelListContent}
                 }
             });
 
-            // Ensure vakaContent is trimmed only if there are actual entries, otherwise it might add extra newlines
             if(vakaContent.trim() !== '') {
-                vakaContent = '\n' + vakaContent.trim(); // Add a newline before the first vaka if content exists
+                vakaContent = '\n' + vakaContent.trim();
             }
 
 
@@ -1540,11 +1537,84 @@ ${personelListContent}
 ${vakaContent}
 [/spoiler]`;
 
-            document.getElementById('sebSahaBBCodeOutput').value = bbCode.trim(); // .trim() removes leading/trailing whitespace
+            document.getElementById('sebSahaBBCodeOutput').value = bbCode.trim();
         }
 
         function copySebSahaBBCode() {
             const output = document.getElementById('sebSahaBBCodeOutput');
+            output.select();
+            document.execCommand('copy');
+            alert('BBCode kopyalandı!');
+        }
+
+        function calculatePatrolTime() {
+            const startTime = document.getElementById('patrolStartTime').value;
+            const endTime = document.getElementById('patrolEndTime').value;
+            const totalPatrolTimeDisplay = document.getElementById('totalPatrolTimeDisplay');
+            const tsdSahaToplamDevriyeSaati = document.getElementById('tsdSahaToplamDevriyeSaati');
+
+            if (startTime && endTime) {
+                const [startHours, startMinutes] = startTime.split(':').map(Number);
+                const [endHours, endMinutes] = endTime.split(':').map(Number);
+
+                let totalMinutes = (endHours * 60 + endMinutes) - (startHours * 60 + startMinutes);
+
+                if (totalMinutes < 0) {
+                    totalMinutes += 24 * 60;
+                }
+
+                const hours = Math.floor(totalMinutes / 60);
+                const minutes = totalMinutes % 60;
+
+                totalPatrolTimeDisplay.textContent = `${String(hours).padStart(2, '0')} Saat ${String(minutes).padStart(2, '0')} Dakika`;
+                tsdSahaToplamDevriyeSaati.value = totalPatrolTimeDisplay.textContent;
+            } else {
+                totalPatrolTimeDisplay.textContent = '00 Saat 00 Dakika';
+                tsdSahaToplamDevriyeSaati.value = '';
+            }
+            generateTsdSahaBBCode();
+        }
+
+        function generateTsdSahaBBCode() {
+            const raporNo = document.getElementById('tsdSahaRaporNo').value;
+            const raporuGirenPersonel = document.getElementById('tsdSahaRaporlayanMemur').value;
+            const devriyePartnerleri = document.getElementById('tsdSahaDevriyePartnerleri').value;
+            const birimKodu = document.getElementById('tsdSahaBirimKodu').value;
+            const toplamDevriyeSaati = document.getElementById('tsdSahaToplamDevriyeSaati').value;
+            const tarihInput = document.getElementById('tsdSahaTarih').value;
+            const kanit = document.getElementById('tsdSahaKanit').value;
+
+            let formattedTarih = 'N/A';
+            if (tarihInput) {
+                const dateParts = tarihInput.split('-');
+                if (dateParts.length === 3) {
+                    formattedTarih = `${dateParts[2]}/${dateParts[1]}/${dateParts[0]}`;
+                }
+            }
+
+            const bbCode = `[center][img width=250 height=250]https://i.imgur.com/rHB6E4X.png[/img][/center]
+
+[center][color=white][size=12pt][b]LOS SANTOS SHERIFF DEPARTMENT[/b][/size][/color][/center]
+[center][color=#1e90ff][size=10pt][b]TRAFFIC SERVICES DETAIL[/b][/size][/color][/center]
+
+[hr]
+
+[color=white][size=11pt][b]Saha Raporlandırması[/b][/size][/color]
+
+[b]Rapor Numarası:[/b] ${raporNo || 'N/A'}
+
+[b]Raporu Giren Personel:[/b] ${raporuGirenPersonel || 'N/A'}
+[b]Devriye Partnerleri:[/b] ${devriyePartnerleri || 'N/A'}
+[b]Birim Kodu:[/b] ${birimKodu || 'N/A'}
+[b]Toplam Devriye Saati:[/b] ${toplamDevriyeSaati || 'N/A'}
+[b]Tarih:[/b] ${formattedTarih}
+[spoiler=Kanıt:]${kanit || 'N/A'}[/spoiler]`;
+
+            document.getElementById('tsdSahaBBCodeOutput').value = bbCode.trim();
+        }
+
+        function copyTsdSahaBBCode() {
+            const output = document.getElementById('tsdSahaBBCodeOutput');
             output.select();
             document.execCommand('copy');
             alert('BBCode kopyalandı!');
