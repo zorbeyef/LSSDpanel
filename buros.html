@@ -902,7 +902,7 @@
             
             <div id="aeroSahaReportForm" class="report-form" style="display:none;">
                 <div class="form-group">
-                    <label for="aeroSahaRaporNo">Rapor Numarası (varsa):</label>
+                    <label for="aeroSahaRaporNo">Rapor Numarası:</label>
                     <input type="text" id="aeroSahaRaporNo" placeholder="Rapor numarasını girin" oninput="generateAeroSahaBBCode()">
                 </div>
                 <div class="form-group">
@@ -1332,9 +1332,9 @@
             let bbCode = `[center][img width=250]https://i.imgur.com/QpkI6L8.png[/img][/center]
 [center][size=4][b]Saha Raporlandırması[/b][/size][/center]
 
-[b]Rapor Numarası (varsa):[/b] ${raporNo || 'Yok'}
+[b]Rapor Numarası:[/b] ${raporNo || 'N/A'}
 [b]Raporlayan Memur:[/b] ${raporlayanMemur}
-[b]Devriye Partneri:[/b] ${devriyePartneri || 'Yok'}
+[b]Devriye Partneri:[/b] ${devriyePartneri || 'N/A'}
 [b]Birim Kodu:[/b] ${birimKodu}
 [spoiler=Durum Raporları]
 [color=maroon][b]Devriye Sonu Ekran Görüntüsü (MDC Paneliyle Beraber Tam Ekran Görüntüsü):[/b][/color] ${devriyeSonuSS}
