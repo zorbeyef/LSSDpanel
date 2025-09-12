@@ -378,14 +378,15 @@
             (<span style="color: var(--color-error);">*</span>) ile işaretlenmiş sorular kanıtlandırılması zorunlu sorulardır.
         </h2>
         
-        <div id="pdQuestionsContainer"></div> <div class="form-group">
+        <div id="pdQuestionsContainer"></div>
+        <div class="form-group">
             <label for="pdKanitlar">Devriye Kanıtları</label>
-            <input type="text" id="pdKanitlar" placeholder="Zorunlu konular için kanıt linklerini buraya girin. (10-55, 10-66, Telsiz Kullanımı, Güç Kullanımı, Olay Bölgesi, Ekipman Bilgisi, Miranda Hakları)">
+            <input type="text" id="pdKanitlar" placeholder="Devriye giriş çıkış ve tüm faaliyetler raporlandırılmalı.">
         </div>
 
         <div class="form-group">
             <label for="pdEgitmenIsim">Eğitmenin Adı Soyadı</label>
-            <input type="text" id="pdEgitmenIsim" placeholder="Örn. Will Winter">
+            <input type="text" id="pdEgitmenIsim" placeholder="Örn. Kate Lindsey">
         </div>
 
         <div class="form-group">
@@ -448,44 +449,53 @@
 
         // --- PD FTP FORM FUNCTIONS ---
         function createPDFTPQuestions() {
-            // Updated questions with asterisks for mandatory topics and new word counts
             const questions = [
-                { id: "pd_update", title: "Stajyer memurun update durumu hakkında olan görüşünüz nedir?", minWords: 0 },
-                { id: "pd_situation1055", title: 'Stajyer memurun 10-55 durumu hakkında olan görüşünüz nedir? <span style="color: var(--color-error);">*</span>', minWords: 30 },
-                { id: "pd_situation1066", title: "Stajyer memurun 10-66 (Felony) durumu hakkında olan görüşünüz nedir? <span style=\"color: var(--color-error);\">*</span>", minWords: 30 },
-                { id: "pd_radioUse", title: 'Stajyer memurun telsiz kullanımı hakkında olan görüşünüz nedir? <span style="color: var(--color-error);">*</span>', minWords: 0 },
-                { id: "pd_tacticalFrequency", title: "Stajyer memurun taktiksel frekans durumu hakkında olan görüşünüz nedir?", minWords: 15 },
-                { id: "pd_civilCommunication", title: "Stajyer memurun siviller ile iletişimi hakkında olan görüşünüz nedir?", minWords: 15 },
-                { id: "pd_forceUse", title: 'Stajyer memurun güç kullanımı konusu hakkında olan görüşünüz nedir? <span style="color: var(--color-error);">*</span>', minWords: 20 },
-                { id: "pd_hierarchy", title: "Stajyer memurun hiyerarşi hakkında olan görüşünüz nedir?", minWords: 0 },
-                { id: "pd_incidentArea", title: 'Stajyer memurun olay bölgesi hakkında olan görüşünüz nedir?', minWords: 20 },
-                { id: "pd_equipmentKnowledge", title: 'Stajyer memurun ekipman bilgisi hakkında olan görüşünüz nedir? <span style="color: var(--color-error);">*</span>', minWords: 20 },
-                { id: "pd_mirandaRights", title: 'Stajyer memurun miranda hakları hakkında olan görüşünüz nedir? <span style="color: var(--color-error);">*</span>', minWords: 0 },
-                { id: "pd_vehicleUsage", title: "Stajyer memurun araç kullanımı hakkında olan görüşünüz nedir?", minWords: 0 },
+                { id: "tutuklamaMiranda", title: "Tutuklama / Miranda Hakları", minWords: 10 },
+                { id: "tanikIfadesi", title: "Tanık/Mağdur İfadesi Alma", minWords: 25 },
+                { id: "yaraliyaIlkyardim", title: "Yaralıya İlk Yardım", minWords: 20 },
+                { id: "toplumsalAsayis", title: "Toplumsal Asayiş Devriyesi", minWords: 30 },
+                { id: "vakaDosyasi", title: "Vaka Dosyası", minWords: 25 },
+                { id: "felonyStop", title: "Felony Stop", minWords: 30 },
+                { id: "doldurulacak1", title: "Doldurulacak 1", minWords: 20, isDynamic: true },
+                { id: "doldurulacak2", title: "Doldurulacak 2", minWords: 20, isDynamic: true },
+                { id: "doldurulacak3", title: "Doldurulacak 3", minWords: 20, isDynamic: true },
+                { id: "doldurulacak4", title: "Doldurulacak 4", minWords: 20, isDynamic: true },
+                { id: "doldurulacak5", title: "Doldurulacak 5", minWords: 20, isDynamic: true },
             ];
 
-            const questionsContainer = document.getElementById("pdQuestionsContainer"); // Use unique ID
+            const questionsContainer = document.getElementById("pdQuestionsContainer");
+            questionsContainer.innerHTML = ''; // Clear existing content
 
             questions.forEach(q => {
+                let titleInput = '';
+                if (q.isDynamic) {
+                    titleInput = `
+                        <div class="form-group">
+                            <label for="${q.id}Title">Soru Başlığı</label>
+                            <input type="text" id="${q.id}Title" placeholder="Lütfen soru başlığını girin.">
+                        </div>
+                    `;
+                }
+
                 const questionHTML = `
                 <div class="form-group">
+                    ${titleInput}
                     <label for="${q.id}">● ${q.title}</label>
                     <textarea id="${q.id}" rows="4" placeholder="Minimum ${q.minWords} kelimelik bilgilendirme giriniz." data-min-words="${q.minWords}"></textarea>
                     <div id="${q.id}WordCount" class="word-count">Kelime Sayısı: 0</div>
                     <div class="radio-group">
                         <label><input type="radio" name="${q.id}Status" value="Yeterli" checked> Yeterli</label>
-                        <label><input type="radio" name="${q.id}Status" value="Orta"> Orta</label>
                         <label><input type="radio" name="${q.id}Status" value="Yetersiz"> Yetersiz</label>
                     </div>
                 </div>`;
                 questionsContainer.innerHTML += questionHTML;
             });
 
-            const textareas = document.querySelectorAll('#pdQuestionsContainer textarea'); // Use unique ID
+            const textareas = document.querySelectorAll('#pdQuestionsContainer textarea');
             textareas.forEach(textarea => {
                 textarea.addEventListener('input', function() {
                     const minWords = this.getAttribute('data-min-words');
-                    countWordsPD(this.id, minWords); // Call a new word count function for PD
+                    countWordsPD(this.id, minWords);
                 });
             });
 
@@ -494,7 +504,7 @@
                 const wordCount = text === "" ? 0 : text.split(/\s+/).length;
                 const wordCountDiv = document.getElementById(`${textareaId}WordCount`);
                 wordCountDiv.innerText = `Kelime Sayısı: ${wordCount}`;
-                if (minWords > 0 && wordCount < minWords) { // Only highlight if minWords > 0
+                if (minWords > 0 && wordCount < minWords) {
                     wordCountDiv.style.color = 'var(--color-error)';
                 } else {
                     wordCountDiv.style.color = 'var(--color-success)';
@@ -504,31 +514,30 @@
 
         // --- PD FTP BBCode GENERATION FUNCTION ---
         function generatePDBBCode() {
-            document.getElementById("pdLoadingContainer").style.display = "block"; // Use unique ID
+            document.getElementById("pdLoadingContainer").style.display = "block";
             let progress = 0;
-            const loadingText = document.getElementById("pdLoadingText"); // Use unique ID
-            const loadingProgress = document.getElementById("pdLoadingProgress"); // Use unique ID
+            const loadingText = document.getElementById("pdLoadingText");
+            const loadingProgress = document.getElementById("pdLoadingProgress");
 
             let bbcode = `[divbox=transparent]\n\n`;
-            // Updated BBCode header as per user's request
+            
+            // Kullanıcının isteği üzerine LSPD başlığı ve logosu korunmuştur.
             bbcode += `[center][img width=175]https://i.imgur.com/YWEP2W5.png[/img]\n`;
             bbcode += `[size=10pt][b]LOS SANTOS POLICE DEPARTMENT — FIELD TRAINING[/b][/size]\n`;
             bbcode += `[i][size=8pt]"[b]to protect and to serve[/b]"[/size][/i][/center]\n\n[hr]\n\n`;
-
-            // Use the PD-specific question IDs
+            
             const questions = [
-                { id: "pd_update", title: "Stajyer memurun update durumu hakkında olan görüşünüz nedir?" },
-                { id: "pd_situation1055", title: "Stajyer memurun 10-55 durumu hakkında olan görüşünüz nedir?" },
-                { id: "pd_situation1066", title: "Stajyer memurun 10-66 (Felony) durumu hakkında olan görüşünüz nedir?" },
-                { id: "pd_radioUse", title: "Stajyer memurun telsiz kullanımı hakkında olan görüşünüz nedir?" },
-                { id: "pd_tacticalFrequency", title: "Stajyer memurun taktiksel frekans durumu hakkında olan görüşünüz nedir?" },
-                { id: "pd_civilCommunication", title: "Stajyer memurun siviller ile iletişimi hakkında olan görüşünüz nedir?" },
-                { id: "pd_forceUse", title: "Stajyer memurun güç kullanımı konusu hakkında olan görüşünüz nedir?" },
-                { id: "pd_hierarchy", title: "Stajyer memurun hiyerarşi hakkında olan görüşünüz nedir?" },
-                { id: "pd_incidentArea", title: "Stajyer memurun olay bölgesi hakkında olan görüşünüz nedir?" },
-                { id: "pd_equipmentKnowledge", title: "Stajyer memurun ekipman bilgisi hakkında olan görüşünüz nedir?" },
-                { id: "pd_mirandaRights", title: "Stajyer memurun miranda hakları hakkında olan görüşünüz nedir?" },
-                { id: "pd_vehicleUsage", title: "Stajyer memurun araç kullanımı hakkında olan görüşünüz nedir?" }
+                { id: "tutuklamaMiranda", title: "Tutuklama / Miranda Hakları" },
+                { id: "tanikIfadesi", title: "Tanık/Mağdur İfadesi Alma" },
+                { id: "yaraliyaIlkyardim", title: "Yaralıya İlk Yardım" },
+                { id: "toplumsalAsayis", title: "Toplumsal Asayiş Devriyesi" },
+                { id: "vakaDosyasi", title: "Vaka Dosyası" },
+                { id: "felonyStop", title: "Felony Stop" },
+                { id: "doldurulacak1", title: "Doldurulacak 1", isDynamic: true },
+                { id: "doldurulacak2", title: "Doldurulacak 2", isDynamic: true },
+                { id: "doldurulacak3", title: "Doldurulacak 3", isDynamic: true },
+                { id: "doldurulacak4", title: "Doldurulacak 4", isDynamic: true },
+                { id: "doldurulacak5", title: "Doldurulacak 5", isDynamic: true },
             ];
 
             let stage = 0;
@@ -538,11 +547,14 @@
                     const value = document.getElementById(q.id).value.trim();
                     const selectedStatus = document.querySelector(`input[name="${q.id}Status"]:checked`).value;
                     
-                    const originalTitle = q.title.replace(/<[^>]*>/g, '');
+                    let questionTitle = q.title;
+                    if (q.isDynamic) {
+                        questionTitle = document.getElementById(`${q.id}Title`).value.trim() || q.title;
+                    }
                     
-                    bbcode += `● [b][size=13pt]${originalTitle}[/size][/b]\n`;
-                    bbcode += `[size=2] [i]${value}[/i]  [/size]\n\n`;
-                    bbcode += `[color=${getColorForStatus(selectedStatus)}][b]${selectedStatus}[/b][/color]\n\n`;
+                    bbcode += `● [size=3][b]${questionTitle}[/b][/size]\n`;
+                    bbcode += `[size=2]${value}[/size]\n\n`;
+                    bbcode += `[-] [color=${getColorForStatus(selectedStatus)}][b]${selectedStatus}[/b][/color]\n\n`;
                     bbcode += `[hr]\n\n`;
 
                     stage++;
@@ -554,24 +566,22 @@
 
                 if (progress >= 100) {
                     clearInterval(interval);
-                    const egitmenrutbe = document.getElementById("pdEgitmenRutbe").value.trim(); // Use unique ID
-                    const egitmenisim = document.getElementById("pdEgitmenIsim").value.trim(); // Use unique ID
-                    const kanitlar = document.getElementById("pdKanitlar").value.trim(); // Use unique ID
+                    const egitmenrutbe = document.getElementById("pdEgitmenRutbe").value.trim();
+                    const egitmenisim = document.getElementById("pdEgitmenIsim").value.trim();
+                    const kanitlar = document.getElementById("pdKanitlar").value.trim();
 
-                    // Updated mandatory topics list as per user's request
-                    bbcode += `Kanıtlandırılması gereken zorunlu konular; 10-55, 10-66, Telsiz Kullanımı, Güç Kullanımı, Olay Bölgesi, Ekipman Bilgisi, Miranda Hakları.\n`;
                     bbcode += `[spoiler=Görsel Kanıt Alanı (Zorunlu)]\n`;
                     bbcode += `${kanitlar}\n`;
                     bbcode += `[/spoiler]\n\n`;
                     bbcode += `[right][b]SAHA EĞİTİM MEMURU[/b]\n`;
-                    bbcode += `[b]${egitmenrutbe}[/b] ${egitmenisim}\n`;
+                    bbcode += `[b]${egitmenrutbe}[/b] [b]${egitmenisim}[/b]\n`;
                     bbcode += `[hr]\n`;
                     bbcode += `[/divbox]`;
 
-                    document.getElementById("pdBbcodeOutput").value = bbcode; // Use unique ID
+                    document.getElementById("pdBbcodeOutput").value = bbcode;
                     loadingText.textContent = "Kod Hazır";
                     setTimeout(() => {
-                        document.getElementById("pdLoadingContainer").style.display = "none"; // Use unique ID
+                        document.getElementById("pdLoadingContainer").style.display = "none";
                     }, 1000);
                 }
             }, 50);    
@@ -580,16 +590,15 @@
 
         function getColorForStatus(status) {
             switch (status) {
-                case "Yeterli": return "#32cd32";
-                case "Orta": return "#ffff00";
-                case "Yetersiz": return "#ff0000";
-                default: return "#ffffff"; // Default if no match
+                case "Yeterli": return "limegreen";
+                case "Yetersiz": return "red";
+                default: return "ffffff"; // Default if no match
             }
         }
 
         // --- PD FTP COPY FUNCTION ---
         function copyPDToClipboard() {
-            const bbcodeOutput = document.getElementById("pdBbcodeOutput"); // Use unique ID
+            const bbcodeOutput = document.getElementById("pdBbcodeOutput");
             bbcodeOutput.select();
             bbcodeOutput.setSelectionRange(0, 99999);    
             try {
